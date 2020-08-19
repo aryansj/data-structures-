@@ -20,12 +20,11 @@ void bfs(int start, int n, vector <int> *adj){
         int temp = v.front();
         cout << temp << " ";
         v.erase(v.begin());
-
-        vector <int>:: iterator i;
-        for(i = adj[temp].begin(); i != adj[temp].end(); i++){  // iterate through all unvisited neighbours of the front element and push them in the vector
-            if(!visited[*i]){
-                visited[*i] = true;
-                v.push_back(*i);
+        
+        for(i = 0; i < adj[temp].size(); i++){  // iterate through all unvisited neighbours of the front element and push them in the vector
+            if(!visited[adj[temp][i]]){
+                visited[adj[temp][i]] = true;
+                v.push_back(adj[temp][i]);
             }
         }
         
@@ -37,17 +36,23 @@ int main() {
     int size;
     cin >> size;
     vector <int> adj[size];
-    
-    addEdge(0, 1, adj); 
-    addEdge(0, 2, adj); 
+
     addEdge(1, 2, adj); 
-    addEdge(2, 0, adj); 
-    addEdge(2, 3, adj); 
-    addEdge(3, 3, adj); 
+    addEdge(2, 1, adj); 
+    addEdge(2, 5, adj); 
+    addEdge(5, 2, adj); 
+    addEdge(1, 3, adj); 
+    addEdge(3, 1, adj); 
+    addEdge(3, 6, adj);
+    addEdge(6, 3, adj);  
+    addEdge(4, 1, adj);
+    addEdge(1, 4, adj);  
+    addEdge(4, 7, adj);
+    addEdge(7, 4, adj); 
   
     cout << "Following is Breadth First Traversal "
-         << "(starting from vertex 2) \n"; 
-    bfs(2, size, adj); 
+         << "(starting from vertex 1) \n"; 
+    bfs(1, size, adj); 
   
     return 0; 
 }
