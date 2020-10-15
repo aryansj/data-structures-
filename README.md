@@ -1,2 +1,3 @@
 # data-structures-
-data structures implementation in c++
+
+Data structures and common algorithms implementation in c++
